@@ -8,11 +8,25 @@
 
 :root {
     /* colors */
+    --color-front:  #0F3557;
+    --color-back: #CCE7FF ;
+
+    --global-background: var(--color-back);
+    --global-text-color: var( --color-front);
+
+    --global-logo-fill: var(--color-front);
+
+    --global-border-color:var(--color-front);
+
 
     /* opacity */
+    --global-muted-opacity: 0.6;
 
     /* transitions */
 }
+
+
+
 
 /*------------------------------------*\
 #GENERIC
@@ -25,12 +39,26 @@
 */
 
 html {
-    font-size: 16px;
+
+    /*POSITIONING*/
+
+    /*BOX MODEL*/
+
+
+    /*FONT*/
+    color: var(--global-text-color);
+    font-size: 16px; /*font-size op de body = 1REM*/
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
+    font-family: 'Work Sans',Helvetica, arial, sans-serif;
+    font-feature-settings: 'zero', 1;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    /*APPEARANCE*/
+    background: var( --global-background);
+
+    
 }
 
 *,
@@ -248,7 +276,18 @@ input::placeholder {
     Website main logo
 */
 
+
+
 .c-logo {
+
+font-size: 1rem;
+line-height: 1rem;
+font-weight: 400;
+
+/*logo en daylight naast elkaar plaatsen!*/
+display: flex;
+align-items: center;
+
 
 }
 
@@ -260,9 +299,18 @@ input::placeholder {
 
 .c-sun {
 
+height: 1.375rem;
+width: 1.375rem;
+fill:var(--global-logo-fill);
+
+
+
+
 }
 
 .c-logo .c-sun {
+
+margin-right: 0.5rem;
 
 }
 
@@ -271,12 +319,95 @@ input::placeholder {
     ---
     Main app wrapper
 */
+.c-app{
+    /*padding 32*/
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: calc(100vh - 2*1rem);
+    box-sizing: content-box;/*padding toevoegen aan max-width kan ook */
+    max-width:400px ; /*of 25 rem..*/
+    padding: 1rem 2rem ; /*16px 32px (in onze huidige font-size)*/
+    margin: 0 auto; /*content (block) centralizeren*/
+
+/*background: hotpink;*/
+
+}
+
+.c-app__summary{
+
+    font-size: 1.75rem; /*zie adobe xd file, font-size/16px= x rem*/
+    line-height: 2.5rem;
+}
 
 /*
     Component: Horizon
     ---
     Horizon with sun visualisation
 */
+
+
+.c-horizon{
+
+margin-top: auto;
+
+}
+.c-horizon__sky-wrapper {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    padding-top: 1.375rem;
+    padding-right: 2.5rem;
+}
+
+.c-horizon__sky {
+    position: relative;
+    height: 100%;
+}
+    
+
+.c-horizon__sun::before{
+
+    display: block;
+    content: attr(data-time);
+    font-size: 0.75rem;/*12px*/
+    line-height: 14px;
+
+    margin-bottom: 8px;
+
+   
+
+}
+
+.c-horizon__sun{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+
+    transform: translateY(50%); /*22px: percentage van maken*/
+
+}
+
+
+      
+.c-horizon__line{
+
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 2.5rem;
+    padding-top: 0.625rem;
+    border-top: 1px solid var(--global-border-color);
+
+}
+  .c-horizon__time {
+      font-size: 0.75rem;/*12px*/
+      line-height: 14px;
+  }
 
 /*------------------------------------*\
 #UTILITIES
@@ -287,6 +418,11 @@ input::placeholder {
     Mute with opacity
 */
 
+.u-muted{
+
+opacity: var(--global-muted-opacity);
+
+}
 /*------------------------------------*\
 #STATES
 \*------------------------------------*/
