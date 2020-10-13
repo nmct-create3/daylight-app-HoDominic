@@ -8,11 +8,16 @@
 
 :root {
     /* colors */
+
+    
+    --color-alpha: #CCE7FF;
+    --color-beta: #0F3557 ;
+
     --color-front:  #0F3557;
     --color-back: #CCE7FF ;
 
-    --global-background: var(--color-back);
-    --global-text-color: var( --color-front);
+    --global-background: var(--color-alpha);
+    --global-text-color: var( --color-beta);
 
     --global-logo-fill: var(--color-front);
 
@@ -432,6 +437,12 @@ opacity: var(--global-muted-opacity);
 */
 
 /* Night version: just switch the light and dark vars */
+
+.is-night{
+    --global-background: var(--color-beta);
+    --global-text-color: var( --color-alpha);
+   
+}
 
 /*------------------------------------*\
 #MEDIA
